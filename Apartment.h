@@ -253,6 +253,56 @@ Bathroom* InputBathroom()
 	gets_s(floor, LENGHT);
 	printf("Введите материал потолка: ");
 	gets_s(ceil, LENGHT);
-	printf("Введите")
+	printf("Введите обделку стен(Плитка - 0, Стандартные - 1): ");
+	scanf("%d", &walltype);
+	printf("Введите средство для мытья(Душ - 0, Ванна - 1): ");
+	scanf("%d", &washtype);
+	while (getchar() != '\n');
+	return CreateBathroom(floor, ceil, walltype, washtype);
+}
+
+SleepingRooms* InputSleepRooms()
+{
+	int numOfPlaceForSleep;
+	char* floor = (char*)calloc(LENGHT, sizeof(char));
+	char* ceil = (char*)calloc(LENGHT, sizeof(char));
+	printf("\tВвод параметров Зала\n");
+	printf("Введите материал пола: ");
+	gets_s(floor, LENGHT);
+	printf("Введите материал потолка: ");
+	gets_s(ceil, LENGHT);
+	printf("Введите кол-во мест для сна(Диван/Кровать): ");
+	scanf("%d", &numOfPlaceForSleep);
+	while (getchar() != '\n');
+	return CreateSleepRooms(floor, ceil, numOfPlaceForSleep);
+}
+
+
+Apartment* InputApartment()
+{
+	printf("\tВвод параметров квартиры\n");
+	int numOfRooms, int floor, int housenum, float square; 
+	char* street = (char*)calloc(LENGHT, sizeof(char));
+	printf("Введите название улицы: ");
+	gets_s(street, LENGHT);
+	printf("Введите номера дома: ");
+	scanf("%d", housenum);
+	printf("Введите номер этажа: ");
+	scanf("%d", floor);
+	printf("Введите площадь квартиры: ");
+	scanf("%d", square);
+	printf("Введите кол-во комнат: ");
+	scanf("%d", numOfRooms);
+	BuildingStatus status;
+	printf("Введите статус(Строится - 0, Готова - 1): ");
+	scanf("%d", &status);
+	while (getchar() != '\n');
+	return CreateApartment(*InputKitchen(), *InputHall(), *InputBathroom(), *InputSleepRooms(), status, numOfRooms, floor, housenum, square, street);
+
+}
+
+void PrintApartmentInfo(Apartment apartment)
+{
+	printf("\tИнформация о квартире\n");
 
 }
