@@ -8,15 +8,15 @@
 
 typedef struct Kitchen
 {
-	char* floor;
-	char* ceil;
+	char* kitchenfloor;
+	char* kitchenceil;
 
 };
 
 typedef struct Hall
 {
-	char* floor;
-	char* ceil;
+	char* hallfloor;
+	char* hallceil;
 	int numOfPlaceForSleep; //То на чём можно спать в этой комнате(диван/кровать и т.д.)
 };
 
@@ -26,8 +26,8 @@ typedef enum BathroomWashTypes {Душ,Ванна};
 
 typedef struct Bathroom
 {
-	char* floor;
-	char* ceil;
+	char* bathroomfloor;
+	char* bathroomceil;
 	BathroomWallTypes walltype;
 	BathroomWashTypes washtype;
 };
@@ -35,8 +35,8 @@ typedef struct Bathroom
 
 typedef struct SleepingRooms
 {
-	char* floor;
-	char* ceil;
+	char* sleepingroomsfloor;
+	char* sleepingroomsceil;
 	int numOfPlaceForSleep; //То на чём можно спать в этой комнате(диван/кровать и т.д.)
 };
 
@@ -117,10 +117,10 @@ Kitchen* CreateKitchen(char* floor, char* ceil)
 	if (strlen(floor) != 0 && strlen(ceil) != 0)
 	{
 		Kitchen* kitchen = (Kitchen*)calloc(1, sizeof(Kitchen));
-		kitchen->floor = (char*)calloc(LENGHT, sizeof(char));
-		kitchen->ceil = (char*)calloc(LENGHT, sizeof(char));
-		strcpy(kitchen->ceil, ceil);
-		strcpy(kitchen->floor, floor);
+		kitchen->kitchenfloor = (char*)calloc(LENGHT, sizeof(char));
+		kitchen->kitchenceil = (char*)calloc(LENGHT, sizeof(char));
+		strcpy(kitchen->kitchenceil, ceil);
+		strcpy(kitchen->kitchenfloor, floor);
 		return kitchen;
 	}
 	else
@@ -135,9 +135,11 @@ Hall* CreateHall(char* floor, char* ceil, int numOfPlaceForSleep)
 	if (strlen(floor) != 0 && strlen(ceil) != 0 && numOfPlaceForSleep >= 0)
 	{
 		Hall* hall = (Hall*)calloc(1, sizeof(Hall));
-		hall->floor = (char*)calloc(LENGHT, sizeof(char));
-		hall->ceil = (char*)calloc(LENGHT, sizeof(char));
+		hall->hallfloor = (char*)calloc(LENGHT, sizeof(char));
+		hall->hallceil = (char*)calloc(LENGHT, sizeof(char));
 		hall->numOfPlaceForSleep = numOfPlaceForSleep;
+		strcpy(hall->hallceil, ceil);
+		strcpy(hall->hallfloor, floor);
 		return hall;
 	}
 	else
@@ -152,10 +154,12 @@ Bathroom* CreateBathroom(char* floor, char* ceil, BathroomWallTypes walltype, Ba
 	if (strlen(floor) != 0 && strlen(ceil) != 0 && walltype >= Плитка && walltype <= Стандартные && washtype >= Душ && washtype <= Ванна)
 	{
 		Bathroom* bathroom = (Bathroom*)calloc(1, sizeof(Bathroom));
-		bathroom->floor = (char*)calloc(LENGHT, sizeof(char));
-		bathroom->ceil = (char*)calloc(LENGHT, sizeof(char));
+		bathroom->bathroomfloor = (char*)calloc(LENGHT, sizeof(char));
+		bathroom->bathroomceil = (char*)calloc(LENGHT, sizeof(char));
 		bathroom->walltype = walltype;
 		bathroom->washtype = washtype;
+		strcpy(bathroom->bathroomceil, ceil);
+		strcpy(bathroom->bathroomfloor, floor);
 		return bathroom;
 	}
 	else
@@ -170,9 +174,11 @@ SleepingRooms* CreateSleepRooms(char* floor, char* ceil, int numOfPlaceForSleep)
 	if (strlen(floor) != 0 && strlen(ceil) != 0 && numOfPlaceForSleep >= 0)
 	{
 		SleepingRooms* sleepingRooms = (SleepingRooms*)calloc(1, sizeof(SleepingRooms));
-		sleepingRooms->floor = (char*)calloc(LENGHT, sizeof(char));
-		sleepingRooms->ceil = (char*)calloc(LENGHT, sizeof(char));
+		sleepingRooms->sleepingroomsfloor = (char*)calloc(LENGHT, sizeof(char));
+		sleepingRooms->sleepingroomsceil = (char*)calloc(LENGHT, sizeof(char));
 		sleepingRooms->numOfPlaceForSleep = numOfPlaceForSleep;
+		strcpy(sleepingRooms->sleepingroomsceil, ceil);
+		strcpy(sleepingRooms->sleepingroomsfloor, floor);
 		return sleepingRooms;
 	}
 	else
@@ -210,14 +216,14 @@ Apartment* CreateApartment(Kitchen kitchen, Hall hall, Bathroom bathroom, Sleepi
 
 Kitchen* InputKitchen()
 {
-	char* floor = (char*)calloc(LENGHT, sizeof(char));
-	char* ceil = (char*)calloc(LENGHT, sizeof(char));
+	char* kitchenfloor = (char*)calloc(LENGHT, sizeof(char));
+	char* kitchenceil = (char*)calloc(LENGHT, sizeof(char));
 	printf("\tВвод параметров кухни\n");
 	printf("Введите материал пола: ");
-	gets_s(floor, LENGHT);
+	gets_s(kitchenfloor, LENGHT);
 	printf("Введите материал потолка: ");
-	gets_s(ceil, LENGHT);
-	return CreateKitchen(floor, ceil);
+	gets_s(kitchenceil, LENGHT);
+	return CreateKitchen(kitchenfloor, kitchenceil);
 
 }
 
@@ -226,54 +232,54 @@ Kitchen* InputKitchen()
 Hall* InputHall()
 {
 	int numOfPlaceForSleep;
-	char* floor = (char*)calloc(LENGHT, sizeof(char));
-	char* ceil = (char*)calloc(LENGHT, sizeof(char));
+	char* hallfloor = (char*)calloc(LENGHT, sizeof(char));
+	char* hallceil = (char*)calloc(LENGHT, sizeof(char));
 	printf("\tВвод параметров Зала\n");
 	printf("Введите материал пола: ");
-	gets_s(floor, LENGHT);
+	gets_s(hallfloor, LENGHT);
 	printf("Введите материал потолка: ");
-	gets_s(ceil, LENGHT);
+	gets_s(hallceil, LENGHT);
 	printf("Введите кол-во мест для сна(Диван/Кровать): ");
 	scanf("%d", &numOfPlaceForSleep);
 	while (getchar() != '\n');
-	return CreateHall(floor, ceil, numOfPlaceForSleep);
+	return CreateHall(hallfloor, hallceil, numOfPlaceForSleep);
 }
 
 
 Bathroom* InputBathroom()
 {
-	char* floor = (char*)calloc(LENGHT, sizeof(char));
-	char* ceil = (char*)calloc(LENGHT, sizeof(char));
+	char* bathroomfloor = (char*)calloc(LENGHT, sizeof(char));
+	char* bathroomceil = (char*)calloc(LENGHT, sizeof(char));
 	BathroomWallTypes walltype;
 	BathroomWashTypes washtype;
 
 	printf("\tВвод параметров Ванной комнаты\n");
 	printf("Введите материал пола: ");
-	gets_s(floor, LENGHT);
+	gets_s(bathroomfloor, LENGHT);
 	printf("Введите материал потолка: ");
-	gets_s(ceil, LENGHT);
+	gets_s(bathroomceil, LENGHT);
 	printf("Введите обделку стен(Плитка - 0, Стандартные - 1): ");
 	scanf("%d", &walltype);
 	printf("Введите средство для мытья(Душ - 0, Ванна - 1): ");
 	scanf("%d", &washtype);
 	while (getchar() != '\n');
-	return CreateBathroom(floor, ceil, walltype, washtype);
+	return CreateBathroom(bathroomfloor, bathroomceil, walltype, washtype);
 }
 
 SleepingRooms* InputSleepRooms()
 {
 	int numOfPlaceForSleep;
-	char* floor = (char*)calloc(LENGHT, sizeof(char));
-	char* ceil = (char*)calloc(LENGHT, sizeof(char));
+	char* sleepingroomsfloor = (char*)calloc(LENGHT, sizeof(char));
+	char* sleepingroomsceil = (char*)calloc(LENGHT, sizeof(char));
 	printf("\tВвод параметров Спальных комнат\n");
 	printf("Введите материал пола: ");
-	gets_s(floor, LENGHT);
+	gets_s(sleepingroomsfloor, LENGHT);
 	printf("Введите материал потолка: ");
-	gets_s(ceil, LENGHT);
+	gets_s(sleepingroomsceil, LENGHT);
 	printf("Введите кол-во мест для сна(Диван/Кровать): ");
 	scanf("%d", &numOfPlaceForSleep);
 	while (getchar() != '\n');
-	return CreateSleepRooms(floor, ceil, numOfPlaceForSleep);
+	return CreateSleepRooms(sleepingroomsfloor, sleepingroomsceil, numOfPlaceForSleep);
 }
 
 
@@ -290,7 +296,7 @@ Apartment* InputApartment()
 	printf("Введите номер этажа: ");
 	scanf("%d", &floor);
 	printf("Введите площадь квартиры: ");
-	scanf("%d", &square);
+	scanf("%f", &square);
 	printf("Введите кол-во комнат: ");
 	scanf("%d", &numOfRooms);
 	BuildingStatus status;
@@ -306,12 +312,12 @@ void PrintApartmentInfo(Apartment apartment)
 	printf("\t\tИнформация о квартире\n");
 	printf("Статус: %s\n", BuildingStatustostring(apartment.status));
 	printf("Улица %s, дом %d, этаж %d\n", apartment.street, apartment.housenum,apartment.floor);
-	printf("Площадь: %lf\nКол-во комнат: %d\n", apartment.square, apartment.numOfRooms);
+	printf("Площадь: %f\nКол-во комнат: %d\n", apartment.square, apartment.numOfRooms);
 	
-	printf("\tЗал\nМатериал пола: %s\nПотолок: %s\nКол-во спальных мест: %d\n", apartment.hall.floor, apartment.hall.ceil,apartment.hall.numOfPlaceForSleep);
-	printf("\tКухня\nМатериал пола: %s\nПотолок: %s\n", apartment.kitchen.floor, apartment.kitchen.ceil);
-	printf("\tВанная комната\nМатериал пола: %s\nПотолок: %s\nОбделка стен: %s\nСредство для мытья: %s\n", apartment.bathroom.floor, apartment.bathroom.ceil,BathroomWallTypetostring(apartment.bathroom.walltype),BathroomWashTypetostring(apartment.bathroom.washtype));
-	printf("\tСпальные комнаты\nМатериал пола: %s\nПотолок: %s\nКол-во спальных мест: %d\n", apartment.sleepingrooms.floor, apartment.sleepingrooms.ceil, apartment.sleepingrooms.numOfPlaceForSleep);
+	printf("\tЗал\nМатериал пола: %s\nПотолок: %s\nКол-во спальных мест: %d\n", apartment.hall.hallfloor, apartment.hall.hallceil,apartment.hall.numOfPlaceForSleep);
+	printf("\tКухня\nМатериал пола: %s\nПотолок: %s\n", apartment.kitchen.kitchenfloor, apartment.kitchen.kitchenceil);
+	printf("\tВанная комната\nМатериал пола: %s\nПотолок: %s\nОбделка стен: %s\nСредство для мытья: %s\n", apartment.bathroom.bathroomfloor, apartment.bathroom.bathroomceil,BathroomWallTypetostring(apartment.bathroom.walltype),BathroomWashTypetostring(apartment.bathroom.washtype));
+	printf("\tСпальные комнаты\nМатериал пола: %s\nПотолок: %s\nКол-во спальных мест: %d\n", apartment.sleepingrooms.sleepingroomsfloor, apartment.sleepingrooms.sleepingroomsceil, apartment.sleepingrooms.numOfPlaceForSleep);
 
 }
 
