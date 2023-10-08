@@ -205,3 +205,54 @@ Apartment* CreateApartment(Kitchen kitchen, Hall hall, Bathroom bathroom, Sleepi
 		exit(EXIT_SUCCESS);
 	}
 }
+
+
+
+Kitchen* InputKitchen()
+{
+	char* floor = (char*)calloc(LENGHT, sizeof(char));
+	char* ceil = (char*)calloc(LENGHT, sizeof(char));
+	printf("\tВвод параметров кухни\n");
+	printf("Введите материал пола: ");
+	gets_s(floor, LENGHT);
+	printf("Введите материал потолка: ");
+	gets_s(ceil, LENGHT);
+	while (getchar() != '\n');
+	return CreateKitchen(floor, ceil);
+
+}
+
+
+
+Hall* InputHall()
+{
+	int numOfPlaceForSleep;
+	char* floor = (char*)calloc(LENGHT, sizeof(char));
+	char* ceil = (char*)calloc(LENGHT, sizeof(char));
+	printf("\tВвод параметров Зала\n");
+	printf("Введите материал пола: ");
+	gets_s(floor, LENGHT);
+	printf("Введите материал потолка: ");
+	gets_s(ceil, LENGHT);
+	printf("Введите кол-во мест для сна(Диван/Кровать): ");
+	scanf("%d", &numOfPlaceForSleep);
+	while (getchar() != '\n');
+	return CreateHall(floor, ceil, numOfPlaceForSleep);
+}
+
+
+Bathroom* InputBathroom()
+{
+	char* floor = (char*)calloc(LENGHT, sizeof(char));
+	char* ceil = (char*)calloc(LENGHT, sizeof(char));
+	BathroomWallTypes walltype;
+	BathroomWashTypes washtype;
+
+	printf("\tВвод параметров Ванной комнаты\n");
+	printf("Введите материал пола: ");
+	gets_s(floor, LENGHT);
+	printf("Введите материал потолка: ");
+	gets_s(ceil, LENGHT);
+	printf("Введите")
+
+}
