@@ -303,6 +303,14 @@ Apartment* InputApartment()
 
 void PrintApartmentInfo(Apartment apartment)
 {
-	printf("\tИнформация о квартире\n");
+	printf("\t\tИнформация о квартире\n");
+	printf("Статус: %s\n", BuildingStatustostring(apartment.status));
+	printf("Улица %s, дом %d, этаж %d\n", apartment.street, apartment.housenum,apartment.floor);
+	printf("Площадь: %f\nКол-во комнат: %d\n", apartment.square, apartment.numOfRooms);
+	printf("\tКухня\nМатериал пола: %s\nПотолок: %s\n", apartment.kitchen.floor, apartment.kitchen.ceil);
+	printf("\tЗал\nМатериал пола: %s\nПотолок: %s\nКол-во спальных мест: %d\n", apartment.hall.floor, apartment.hall.ceil,apartment.hall.numOfPlaceForSleep);
+	printf("\tВанная комната\nМатериал пола: %s\nПотолок: %s\nОбделка стен: %s\nСредство для мытья: %s", apartment.bathroom.floor, apartment.bathroom.ceil,BathroomWallTypetostring(apartment.bathroom.walltype),BathroomWashTypetostring(apartment.bathroom.washtype));
+	printf("\tСпальные комнаты\nМатериал пола: %s\nПотолок: %s\nКол-во спальных мест: %d\n", apartment.sleepingrooms.floor, apartment.sleepingrooms.ceil, apartment.sleepingrooms.numOfPlaceForSleep);
 
 }
+
