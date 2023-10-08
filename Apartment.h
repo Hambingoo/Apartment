@@ -314,3 +314,18 @@ void PrintApartmentInfo(Apartment apartment)
 
 }
 
+
+
+void ChangeStatus(Apartment* apartment, BuildingStatus newStatus)
+{
+	if (newStatus >= Строится && newStatus <= Готова)
+	{
+		apartment->status = newStatus;
+		printf("Состояние квартиры изменено!\n");
+	}
+	else
+	{
+		printf("Неправильно введены данные! Выход...");
+		exit(EXIT_SUCCESS);
+	}
+}
