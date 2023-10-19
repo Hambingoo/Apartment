@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <malloc.h>
 #include <string.h>
 #include <stdlib.h>
@@ -17,12 +17,12 @@ typedef struct Hall
 {
 	char* hallfloor;
 	char* hallceil;
-	int numOfPlaceForSleep; //То на чём можно спать в этой комнате(диван/кровать и т.д.)
+	int numOfPlaceForSleep; //РўРѕ РЅР° С‡С‘Рј РјРѕР¶РЅРѕ СЃРїР°С‚СЊ РІ СЌС‚РѕР№ РєРѕРјРЅР°С‚Рµ(РґРёРІР°РЅ/РєСЂРѕРІР°С‚СЊ Рё С‚.Рґ.)
 };
 
-typedef enum BathroomWallTypes { Плитка,Стандартные};
+typedef enum BathroomWallTypes { РџР»РёС‚РєР°,РЎС‚Р°РЅРґР°СЂС‚РЅС‹Рµ};
 
-typedef enum BathroomWashTypes {Душ,Ванна};
+typedef enum BathroomWashTypes {Р”СѓС€,Р’Р°РЅРЅР°};
 
 typedef struct Bathroom
 {
@@ -37,10 +37,10 @@ typedef struct SleepingRooms
 {
 	char* sleepingroomsfloor;
 	char* sleepingroomsceil;
-	int numOfPlaceForSleep; //То на чём можно спать в этой комнате(диван/кровать и т.д.)
+	int numOfPlaceForSleep; //РўРѕ РЅР° С‡С‘Рј РјРѕР¶РЅРѕ СЃРїР°С‚СЊ РІ СЌС‚РѕР№ РєРѕРјРЅР°С‚Рµ(РґРёРІР°РЅ/РєСЂРѕРІР°С‚СЊ Рё С‚.Рґ.)
 };
 
-typedef enum BuildingStatus {Строится, Готова};
+typedef enum BuildingStatus {РЎС‚СЂРѕРёС‚СЃСЏ, Р“РѕС‚РѕРІР°};
 
 typedef struct Apartment
 {
@@ -55,18 +55,18 @@ typedef struct Apartment
 };
 
 
-//функция для перевода BathroomWallTypes в строку
+//С„СѓРЅРєС†РёСЏ РґР»СЏ РїРµСЂРµРІРѕРґР° BathroomWallTypes РІ СЃС‚СЂРѕРєСѓ
 char* BathroomWallTypetostring(BathroomWallTypes type)
 {
 	char* strType = (char*)calloc(LENGHT, sizeof(char));
 	
 	switch (type)
 	{
-	case Плитка:
-		strcpy(strType, "Плитка");
+	case РџР»РёС‚РєР°:
+		strcpy(strType, "РџР»РёС‚РєР°");
 		break;
-	case Стандартные:
-		strcpy(strType, "Стандартные");
+	case РЎС‚Р°РЅРґР°СЂС‚РЅС‹Рµ:
+		strcpy(strType, "РЎС‚Р°РЅРґР°СЂС‚РЅС‹Рµ");
 		break;
 	default:
 		break;
@@ -74,18 +74,18 @@ char* BathroomWallTypetostring(BathroomWallTypes type)
 	return strType;
 }
 
-//функция для перевода BathroomWashTypes в строку
+//С„СѓРЅРєС†РёСЏ РґР»СЏ РїРµСЂРµРІРѕРґР° BathroomWashTypes РІ СЃС‚СЂРѕРєСѓ
 char* BathroomWashTypetostring(BathroomWashTypes type)
 {
 	char* strType = (char*)calloc(LENGHT, sizeof(char));
 
 	switch (type)
 	{
-	case Душ:
-		strcpy(strType, "Душ");
+	case Р”СѓС€:
+		strcpy(strType, "Р”СѓС€");
 		break;
-	case Ванна:
-		strcpy(strType, "Ванна");
+	case Р’Р°РЅРЅР°:
+		strcpy(strType, "Р’Р°РЅРЅР°");
 		break;
 	default:
 		break;
@@ -93,18 +93,18 @@ char* BathroomWashTypetostring(BathroomWashTypes type)
 	return strType;
 }
 
-//функция для перевода BuildingStatus в строку
+//С„СѓРЅРєС†РёСЏ РґР»СЏ РїРµСЂРµРІРѕРґР° BuildingStatus РІ СЃС‚СЂРѕРєСѓ
 char* BuildingStatustostring(BuildingStatus type)
 {
 	char* strType = (char*)calloc(LENGHT, sizeof(char));
 
 	switch (type)
 	{
-	case Строится:
-		strcpy(strType, "Строится");
+	case РЎС‚СЂРѕРёС‚СЃСЏ:
+		strcpy(strType, "РЎС‚СЂРѕРёС‚СЃСЏ");
 		break;
-	case Готова:
-		strcpy(strType, "Готова");
+	case Р“РѕС‚РѕРІР°:
+		strcpy(strType, "Р“РѕС‚РѕРІР°");
 		break;
 	default:
 		break;
@@ -125,7 +125,7 @@ Kitchen* CreateKitchen(char* floor, char* ceil)
 	}
 	else
 	{
-		printf("Неправильно введены данные! Выход...");
+		printf("РќРµРїСЂР°РІРёР»СЊРЅРѕ РІРІРµРґРµРЅС‹ РґР°РЅРЅС‹Рµ! Р’С‹С…РѕРґ...");
 		exit(EXIT_SUCCESS);
 	}
 }
@@ -144,14 +144,14 @@ Hall* CreateHall(char* floor, char* ceil, int numOfPlaceForSleep)
 	}
 	else
 	{
-		printf("Неправильно введены данные! Выход...");
+		printf("РќРµРїСЂР°РІРёР»СЊРЅРѕ РІРІРµРґРµРЅС‹ РґР°РЅРЅС‹Рµ! Р’С‹С…РѕРґ...");
 		exit(EXIT_SUCCESS);
 	}
 }
 
 Bathroom* CreateBathroom(char* floor, char* ceil, BathroomWallTypes walltype, BathroomWashTypes washtype)
 {
-	if (strlen(floor) != 0 && strlen(ceil) != 0 && walltype >= Плитка && walltype <= Стандартные && washtype >= Душ && washtype <= Ванна)
+	if (strlen(floor) != 0 && strlen(ceil) != 0 && walltype >= РџР»РёС‚РєР° && walltype <= РЎС‚Р°РЅРґР°СЂС‚РЅС‹Рµ && washtype >= Р”СѓС€ && washtype <= Р’Р°РЅРЅР°)
 	{
 		Bathroom* bathroom = (Bathroom*)calloc(1, sizeof(Bathroom));
 		bathroom->bathroomfloor = (char*)calloc(LENGHT, sizeof(char));
@@ -164,7 +164,7 @@ Bathroom* CreateBathroom(char* floor, char* ceil, BathroomWallTypes walltype, Ba
 	}
 	else
 	{
-		printf("Неправильно введены данные! Выход...");
+		printf("РќРµРїСЂР°РІРёР»СЊРЅРѕ РІРІРµРґРµРЅС‹ РґР°РЅРЅС‹Рµ! Р’С‹С…РѕРґ...");
 		exit(EXIT_SUCCESS);
 	}
 }
@@ -183,14 +183,14 @@ SleepingRooms* CreateSleepRooms(char* floor, char* ceil, int numOfPlaceForSleep)
 	}
 	else
 	{
-		printf("Неправильно введены данные! Выход...");
+		printf("РќРµРїСЂР°РІРёР»СЊРЅРѕ РІРІРµРґРµРЅС‹ РґР°РЅРЅС‹Рµ! Р’С‹С…РѕРґ...");
 		exit(EXIT_SUCCESS);
 	}
 }
 
 Apartment* CreateApartment(Kitchen kitchen, Hall hall, Bathroom bathroom, SleepingRooms sleepingrooms, BuildingStatus status, int numOfRooms, int floor, int housenum, float square, char* street)
 {
-	if (numOfRooms >= 0 && floor > 0 && housenum > 0 && square > 0 && strlen(street) > 0 &&status>=Строится&&status<=Готова)
+	if (numOfRooms >= 0 && floor > 0 && housenum > 0 && square > 0 && strlen(street) > 0 &&status>=РЎС‚СЂРѕРёС‚СЃСЏ&&status<=Р“РѕС‚РѕРІР°)
 	{
 		Apartment* apartment = (Apartment*)calloc(1, sizeof(Apartment));
 		apartment->street = (char*)calloc(LENGHT, sizeof(char));
@@ -207,7 +207,7 @@ Apartment* CreateApartment(Kitchen kitchen, Hall hall, Bathroom bathroom, Sleepi
 	}
 	else
 	{
-		printf("Неправильно введены данные! Выход...");
+		printf("РќРµРїСЂР°РІРёР»СЊРЅРѕ РІРІРµРґРµРЅС‹ РґР°РЅРЅС‹Рµ! Р’С‹С…РѕРґ...");
 		exit(EXIT_SUCCESS);
 	}
 }
@@ -218,10 +218,10 @@ Kitchen* InputKitchen()
 {
 	char* kitchenfloor = (char*)calloc(LENGHT, sizeof(char));
 	char* kitchenceil = (char*)calloc(LENGHT, sizeof(char));
-	printf("\tВвод параметров кухни\n");
-	printf("Введите материал пола: ");
+	printf("\tР’РІРѕРґ РїР°СЂР°РјРµС‚СЂРѕРІ РєСѓС…РЅРё\n");
+	printf("Р’РІРµРґРёС‚Рµ РјР°С‚РµСЂРёР°Р» РїРѕР»Р°: ");
 	gets_s(kitchenfloor, LENGHT);
-	printf("Введите материал потолка: ");
+	printf("Р’РІРµРґРёС‚Рµ РјР°С‚РµСЂРёР°Р» РїРѕС‚РѕР»РєР°: ");
 	gets_s(kitchenceil, LENGHT);
 	return CreateKitchen(kitchenfloor, kitchenceil);
 
@@ -234,12 +234,12 @@ Hall* InputHall()
 	int numOfPlaceForSleep;
 	char* hallfloor = (char*)calloc(LENGHT, sizeof(char));
 	char* hallceil = (char*)calloc(LENGHT, sizeof(char));
-	printf("\tВвод параметров Зала\n");
-	printf("Введите материал пола: ");
+	printf("\tР’РІРѕРґ РїР°СЂР°РјРµС‚СЂРѕРІ Р—Р°Р»Р°\n");
+	printf("Р’РІРµРґРёС‚Рµ РјР°С‚РµСЂРёР°Р» РїРѕР»Р°: ");
 	gets_s(hallfloor, LENGHT);
-	printf("Введите материал потолка: ");
+	printf("Р’РІРµРґРёС‚Рµ РјР°С‚РµСЂРёР°Р» РїРѕС‚РѕР»РєР°: ");
 	gets_s(hallceil, LENGHT);
-	printf("Введите кол-во мест для сна(Диван/Кровать): ");
+	printf("Р’РІРµРґРёС‚Рµ РєРѕР»-РІРѕ РјРµСЃС‚ РґР»СЏ СЃРЅР°(Р”РёРІР°РЅ/РљСЂРѕРІР°С‚СЊ): ");
 	scanf("%d", &numOfPlaceForSleep);
 	while (getchar() != '\n');
 	return CreateHall(hallfloor, hallceil, numOfPlaceForSleep);
@@ -253,14 +253,14 @@ Bathroom* InputBathroom()
 	BathroomWallTypes walltype;
 	BathroomWashTypes washtype;
 
-	printf("\tВвод параметров Ванной комнаты\n");
-	printf("Введите материал пола: ");
+	printf("\tР’РІРѕРґ РїР°СЂР°РјРµС‚СЂРѕРІ Р’Р°РЅРЅРѕР№ РєРѕРјРЅР°С‚С‹\n");
+	printf("Р’РІРµРґРёС‚Рµ РјР°С‚РµСЂРёР°Р» РїРѕР»Р°: ");
 	gets_s(bathroomfloor, LENGHT);
-	printf("Введите материал потолка: ");
+	printf("Р’РІРµРґРёС‚Рµ РјР°С‚РµСЂРёР°Р» РїРѕС‚РѕР»РєР°: ");
 	gets_s(bathroomceil, LENGHT);
-	printf("Введите обделку стен(Плитка - 0, Стандартные - 1): ");
+	printf("Р’РІРµРґРёС‚Рµ РѕР±РґРµР»РєСѓ СЃС‚РµРЅ(РџР»РёС‚РєР° - 0, РЎС‚Р°РЅРґР°СЂС‚РЅС‹Рµ - 1): ");
 	scanf("%d", &walltype);
-	printf("Введите средство для мытья(Душ - 0, Ванна - 1): ");
+	printf("Р’РІРµРґРёС‚Рµ СЃСЂРµРґСЃС‚РІРѕ РґР»СЏ РјС‹С‚СЊСЏ(Р”СѓС€ - 0, Р’Р°РЅРЅР° - 1): ");
 	scanf("%d", &washtype);
 	while (getchar() != '\n');
 	return CreateBathroom(bathroomfloor, bathroomceil, walltype, washtype);
@@ -271,12 +271,12 @@ SleepingRooms* InputSleepRooms()
 	int numOfPlaceForSleep;
 	char* sleepingroomsfloor = (char*)calloc(LENGHT, sizeof(char));
 	char* sleepingroomsceil = (char*)calloc(LENGHT, sizeof(char));
-	printf("\tВвод параметров Спальных комнат\n");
-	printf("Введите материал пола: ");
+	printf("\tР’РІРѕРґ РїР°СЂР°РјРµС‚СЂРѕРІ РЎРїР°Р»СЊРЅС‹С… РєРѕРјРЅР°С‚\n");
+	printf("Р’РІРµРґРёС‚Рµ РјР°С‚РµСЂРёР°Р» РїРѕР»Р°: ");
 	gets_s(sleepingroomsfloor, LENGHT);
-	printf("Введите материал потолка: ");
+	printf("Р’РІРµРґРёС‚Рµ РјР°С‚РµСЂРёР°Р» РїРѕС‚РѕР»РєР°: ");
 	gets_s(sleepingroomsceil, LENGHT);
-	printf("Введите кол-во мест для сна(Диван/Кровать): ");
+	printf("Р’РІРµРґРёС‚Рµ РєРѕР»-РІРѕ РјРµСЃС‚ РґР»СЏ СЃРЅР°(Р”РёРІР°РЅ/РљСЂРѕРІР°С‚СЊ): ");
 	scanf("%d", &numOfPlaceForSleep);
 	while (getchar() != '\n');
 	return CreateSleepRooms(sleepingroomsfloor, sleepingroomsceil, numOfPlaceForSleep);
@@ -285,22 +285,22 @@ SleepingRooms* InputSleepRooms()
 
 Apartment* InputApartment()
 {
-	printf("\tВвод параметров квартиры\n");
+	printf("\tР’РІРѕРґ РїР°СЂР°РјРµС‚СЂРѕРІ РєРІР°СЂС‚РёСЂС‹\n");
 	int numOfRooms, floor, housenum; 
 	float square;
 	char* street = (char*)calloc(LENGHT, sizeof(char));
-	printf("Введите название улицы: ");
+	printf("Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ СѓР»РёС†С‹: ");
 	gets_s(street, LENGHT);
-	printf("Введите номера дома: ");
+	printf("Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂР° РґРѕРјР°: ");
 	scanf("%d", &housenum);
-	printf("Введите номер этажа: ");
+	printf("Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ СЌС‚Р°Р¶Р°: ");
 	scanf("%d", &floor);
-	printf("Введите площадь квартиры: ");
+	printf("Р’РІРµРґРёС‚Рµ РїР»РѕС‰Р°РґСЊ РєРІР°СЂС‚РёСЂС‹: ");
 	scanf("%f", &square);
-	printf("Введите кол-во комнат: ");
+	printf("Р’РІРµРґРёС‚Рµ РєРѕР»-РІРѕ РєРѕРјРЅР°С‚: ");
 	scanf("%d", &numOfRooms);
 	BuildingStatus status;
-	printf("Введите статус(Строится - 0, Готова - 1): ");
+	printf("Р’РІРµРґРёС‚Рµ СЃС‚Р°С‚СѓСЃ(РЎС‚СЂРѕРёС‚СЃСЏ - 0, Р“РѕС‚РѕРІР° - 1): ");
 	scanf("%d", &status);
 	while (getchar() != '\n');
 	return CreateApartment(*InputKitchen(), *InputHall(), *InputBathroom(), *InputSleepRooms(), status, numOfRooms, floor, housenum, square, street);
@@ -309,30 +309,42 @@ Apartment* InputApartment()
 
 void PrintApartmentInfo(Apartment apartment)
 {
-	printf("\t\tИнформация о квартире\n");
-	printf("Статус: %s\n", BuildingStatustostring(apartment.status));
-	printf("Улица %s, дом %d, этаж %d\n", apartment.street, apartment.housenum,apartment.floor);
-	printf("Площадь: %f\nКол-во комнат: %d\n", apartment.square, apartment.numOfRooms);
+	printf("\t\tРРЅС„РѕСЂРјР°С†РёСЏ Рѕ РєРІР°СЂС‚РёСЂРµ\n");
+	printf("РЎС‚Р°С‚СѓСЃ: %s\n", BuildingStatustostring(apartment.status));
+	printf("РЈР»РёС†Р° %s, РґРѕРј %d, СЌС‚Р°Р¶ %d\n", apartment.street, apartment.housenum,apartment.floor);
+	printf("РџР»РѕС‰Р°РґСЊ: %f\nРљРѕР»-РІРѕ РєРѕРјРЅР°С‚: %d\n", apartment.square, apartment.numOfRooms);
 	
-	printf("\tЗал\nМатериал пола: %s\nПотолок: %s\nКол-во спальных мест: %d\n", apartment.hall.hallfloor, apartment.hall.hallceil,apartment.hall.numOfPlaceForSleep);
-	printf("\tКухня\nМатериал пола: %s\nПотолок: %s\n", apartment.kitchen.kitchenfloor, apartment.kitchen.kitchenceil);
-	printf("\tВанная комната\nМатериал пола: %s\nПотолок: %s\nОбделка стен: %s\nСредство для мытья: %s\n", apartment.bathroom.bathroomfloor, apartment.bathroom.bathroomceil,BathroomWallTypetostring(apartment.bathroom.walltype),BathroomWashTypetostring(apartment.bathroom.washtype));
-	printf("\tСпальные комнаты\nМатериал пола: %s\nПотолок: %s\nКол-во спальных мест: %d\n", apartment.sleepingrooms.sleepingroomsfloor, apartment.sleepingrooms.sleepingroomsceil, apartment.sleepingrooms.numOfPlaceForSleep);
+	printf("\tР—Р°Р»\nРњР°С‚РµСЂРёР°Р» РїРѕР»Р°: %s\nРџРѕС‚РѕР»РѕРє: %s\nРљРѕР»-РІРѕ СЃРїР°Р»СЊРЅС‹С… РјРµСЃС‚: %d\n", apartment.hall.hallfloor, apartment.hall.hallceil,apartment.hall.numOfPlaceForSleep);
+	printf("\tРљСѓС…РЅСЏ\nРњР°С‚РµСЂРёР°Р» РїРѕР»Р°: %s\nРџРѕС‚РѕР»РѕРє: %s\n", apartment.kitchen.kitchenfloor, apartment.kitchen.kitchenceil);
+	printf("\tР’Р°РЅРЅР°СЏ РєРѕРјРЅР°С‚Р°\nРњР°С‚РµСЂРёР°Р» РїРѕР»Р°: %s\nРџРѕС‚РѕР»РѕРє: %s\nРћР±РґРµР»РєР° СЃС‚РµРЅ: %s\nРЎСЂРµРґСЃС‚РІРѕ РґР»СЏ РјС‹С‚СЊСЏ: %s\n", apartment.bathroom.bathroomfloor, apartment.bathroom.bathroomceil,BathroomWallTypetostring(apartment.bathroom.walltype),BathroomWashTypetostring(apartment.bathroom.washtype));
+	printf("\tРЎРїР°Р»СЊРЅС‹Рµ РєРѕРјРЅР°С‚С‹\nРњР°С‚РµСЂРёР°Р» РїРѕР»Р°: %s\nРџРѕС‚РѕР»РѕРє: %s\nРљРѕР»-РІРѕ СЃРїР°Р»СЊРЅС‹С… РјРµСЃС‚: %d\n", apartment.sleepingrooms.sleepingroomsfloor, apartment.sleepingrooms.sleepingroomsceil, apartment.sleepingrooms.numOfPlaceForSleep);
 
 }
 
 
-
+//С„СѓРЅРєС†РёСЏ РёР·РјРµРЅРµРЅРёСЏ СЃС‚Р°С‚СѓСЃР° РєРІР°СЂС‚РёСЂС‹
 void ChangeStatus(Apartment* apartment, BuildingStatus newStatus)
 {
-	if (newStatus >= Строится && newStatus <= Готова)
+	if (newStatus >= РЎС‚СЂРѕРёС‚СЃСЏ && newStatus <= Р“РѕС‚РѕРІР°)
 	{
 		apartment->status = newStatus;
-		printf("Состояние квартиры изменено!\n");
+		printf("РЎРѕСЃС‚РѕСЏРЅРёРµ РєРІР°СЂС‚РёСЂС‹ РёР·РјРµРЅРµРЅРѕ!\n");
 	}
 	else
 	{
-		printf("Неправильно введены данные! Выход...");
+		printf("РќРµРїСЂР°РІРёР»СЊРЅРѕ РІРІРµРґРµРЅС‹ РґР°РЅРЅС‹Рµ! Р’С‹С…РѕРґ...");
 		exit(EXIT_SUCCESS);
 	}
+}
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕСЃРІРѕР±РѕР¶РґРµРЅРёСЏ РїР°РјСЏС‚Рё
+void FreeMemory(Apartment* apartment)
+{
+	free(apartment->bathroom.bathroomceil);
+	free(apartment->bathroom.bathroomfloor);
+	free(apartment->kitchen.kitchenceil);
+	free(apartment->kitchen.kitchenfloor);
+	free(apartment->sleepingrooms.sleepingroomsceil);
+	free(apartment->sleepingrooms.sleepingroomsfloor);
+	free(apartment->hall.hallceil);
+	free(apartment->hall.hallfloor);
 }
